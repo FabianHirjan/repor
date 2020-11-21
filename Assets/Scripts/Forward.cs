@@ -10,7 +10,7 @@ public class Forward : MonoBehaviour
     void Start()
     {
         //GameObject.rigidbody.constantForce
-        timetodestroy = 3;
+        timetodestroy = 1.5f;
     }
 
     // Update is called once per frame

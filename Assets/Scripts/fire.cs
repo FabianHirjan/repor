@@ -12,6 +12,7 @@ public class fire : MonoBehaviour
     public TextMeshProUGUI bullets;
     public TextMeshProUGUI score;
     public TextMeshProUGUI congratulations;
+    public AudioClip gunShot;
 
     public int usedBullets;
     public int maxBullets;
@@ -28,7 +29,11 @@ public class fire : MonoBehaviour
         PlayerPrefs.SetInt("Score", 0);
     }
 
-
+    private void Start()
+    {
+        this.gameObject.AddComponent<AudioSource>();
+        this.GetComponent<AudioSource>().clip = gunShot;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -39,8 +44,10 @@ public class fire : MonoBehaviour
         {
             if(usedBullets <= maxBullets)
             {
+                this.GetComponent<AudioSource>().Play();
                 Instantiate(blast, firePlace.transform.position, firePlace.transform.rotation);
                 usedBullets++;
+
             }
             
         }
@@ -68,6 +75,7 @@ public class fire : MonoBehaviour
             cash = PlayerPrefs.GetInt("Prize", 0);
             myCash = PlayerPrefs.GetInt("GoldAmount", 0);
             PlayerPrefs.SetInt("GoldAmount", myCash + (cash * 2));
+
         }
         else
         {

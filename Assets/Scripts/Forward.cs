@@ -10,14 +10,14 @@ public class Forward : MonoBehaviour
     void Start()
     {
         //GameObject.rigidbody.constantForce
-        timetodestroy = 1.5f;
+        timetodestroy = 1.25f;
     }
 
     // Update is called once per frame
     void Update()
     {
         timetodestroy = timetodestroy - Time.deltaTime;
-        gameObject.transform.position += transform.forward * Time.deltaTime * 30;
+        gameObject.transform.position += transform.forward * Time.deltaTime * 50;
         if (timetodestroy < 0)
         {
             Destroy(gameObject);
